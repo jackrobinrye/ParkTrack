@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :new, :create]
 
-    resources :sessions, only [:new, :create, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
 
     #show/update/destroy
     # sighting/1
