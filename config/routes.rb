@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'species/index'
+  get 'species/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
     resources :parks, only: [:index, :show] do
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :new, :create]
 
     resources :sessions, only: [:new, :create, :destroy]
+
+    root 'application#hello'
 
     #show/update/destroy
     # sighting/1

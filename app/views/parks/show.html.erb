@@ -1,2 +1,7 @@
-<h1>Parks#show</h1>
-<p>Find me in app/views/parks/show.html.erb</p>
+<h1><%= @park.name %> National Park</h1>
+
+<ul>
+    <% @species.each do |species| %>
+        <li><%= species.name %></li>
+    <% end %>
+</ul>

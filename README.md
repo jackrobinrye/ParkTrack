@@ -1,24 +1,15 @@
-# README
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ParkTrack</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  <body>
+    <%= yield %>
+  </body>
+</html>

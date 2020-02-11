@@ -7,9 +7,63 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <style>
+        .header {
+          position: fixed;
+          width: 100%;
+          height:70px;
+          background-color: white;
+          color: white;
+          text-align: left;
+        }
+
+        body {
+          background-image: url("/background-image.png");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          font-family: "Lucida Console", Monaco, monospace;
+          line-height: 18px;
+        }
+
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height:22px;
+          background-color: white;
+          color: white;
+          text-align: left;
+        }
+      </style>
+    </head>
 
   <body>
+
+    
+    
+    <h1 style="font-size:40px;text-align:center"><%= link_to "ParkTrack", root_path %></h1>
+    
+    <% if session[:user_id] %>
+      <p style="text-align:left;">
+        <a href= <%= new_book_record_path %> >Add Book To My Library</a>
+        <a href= <%= new_book_path %> >Create New Book</a>
+        <a href= <%= new_author_path %> >Create New Author</a>
+        <span style="float:right;">
+            <a href= <%= browse_path %> >Browse</a>
+            <a href= <%= user_path(current_user) %> >My Page</a>
+        </span>
+      </p>
+      <br>
+    <% end %>
+
     <%= yield %>
+
+    <div class="footer">
+		<% if session[:user_id] %>
+        <%= link_to "Log Out", sessions_destroy_path %>
+    <% end %>
+    </div>
+    <br>
   </body>
 </html>
