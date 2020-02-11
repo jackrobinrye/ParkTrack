@@ -1,7 +1,4 @@
-<h1><%= @park.name %> National Park</h1>
+<h1><%= "#{@park.name} National Park" %></h1>
+<h2>Species found in this park:</h2>
 
-<ul>
-    <% @species.each do |species| %>
-        <li><%= species.name %></li>
-    <% end %>
-</ul>
+<%= render partial: "./species_index", locals: {arr: @species} %>

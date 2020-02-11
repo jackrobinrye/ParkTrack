@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     end 
 
     def hello
+        @parks = alphabetize(Park.all)
+        @species = alphabetize(Species.all) 
     end 
     
 end

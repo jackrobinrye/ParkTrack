@@ -1,6 +1,3 @@
 <h1>National Parks</h1>
-<ul>
-    <% @parks.each do |park| %>
-        <li><%= link_to "#{park.name} National Park", park_path(park) %></li>
-    <% end %>
-</ul>
+
+<%= render partial: "./park_index", locals: {arr: @parks} %>

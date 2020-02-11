@@ -1,0 +1,5 @@
+<ul>
+    <% arr.each do |item| %>
+        <li><%= link_to item.name, species_path(item) %></li>
+    <% end %>
+</ul>
