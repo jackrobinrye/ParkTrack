@@ -43,15 +43,9 @@
     
     <h1 style="font-size:40px;text-align:center"><%= link_to "ParkTrack", root_path %></h1>
     
-    <% if session[:user_id] %>
-      <p style="text-align:left;">
-        <a href= <%= new_book_record_path %> >Add Book To My Library</a>
-        <a href= <%= new_book_path %> >Create New Book</a>
-        <a href= <%= new_author_path %> >Create New Author</a>
-        <span style="float:right;">
-            <a href= <%= browse_path %> >Browse</a>
-            <a href= <%= user_path(current_user) %> >My Page</a>
-        </span>
+    <% if user_signed_in? %>
+      <p style="text-align:center;">
+        <%= link_to "Record A New Sighting!", new_sighting_path %>
       </p>
       <br>
     <% end %>
@@ -60,9 +54,9 @@
 
     <div class="footer">
       <% if user_signed_in? %>
-        <%= link_to "Log Out", destroy_user_session_url, method: :delete %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to "Sign In", new_user_session_url %>
+        <%= link_to "Sign In", new_user_session_path %>
       <% end %>
     </div>
     <br>

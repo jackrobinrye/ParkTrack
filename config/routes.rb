@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'sightings/show'
+  get 'sightings/new'
+  get 'sightings/edit'
   get 'users/show'
   devise_for :users
   
