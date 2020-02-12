@@ -41,8 +41,8 @@ pine = Species.create(name: "Pine Tree", kingdom: "Plantae")
 #     t.integer "age"
 #   end
 
-jack = User.create(email: "jack@gmail.com", password: "password", name: "Jack", age: 25)
-sarah = User.create(email: "sarah@gmail.com", password: "password", name: "Sarah", age: 24)
+# jack = User.create(email: "jack@gmail.com", password: "password", name: "Jack", age: 25)
+# sarah = User.create(email: "sarah@gmail.com", password: "password", name: "Sarah", age: 24)
 
 
 #   create_table "sightings", force: :cascade do |t|
@@ -52,10 +52,10 @@ sarah = User.create(email: "sarah@gmail.com", password: "password", name: "Sarah
 #     t.integer "species_id"
 #   end
 
-Sighting.create(date: Date.new(2015, 12, 8), user_id: jack.id, park_id: grand_teton.id, species_id: bobcat.id)
-Sighting.create(date: Date.new(2015, 12, 10), user_id: jack.id, park_id: yellowstone.id, species_id: bobcat.id)
-Sighting.create(date: Date.new(2016, 12, 10), user_id: jack.id, park_id: yellowstone.id, species_id: black_bear.id)
-Sighting.create(date: Date.new(2017, 12, 10), user_id: jack.id, park_id: yellowstone.id, species_id: pine.id)
-Sighting.create(date: Date.new(2015, 10, 12), user_id: sarah.id, park_id: yosemite.id, species_id: black_bear.id)
-Sighting.create(date: Date.new(2015, 10, 12), user_id: sarah.id, park_id: yosemite.id, species_id: pine.id)
-Sighting.create(date: Date.new(2015, 10, 12), user_id: sarah.id, park_id: yosemite.id, species_id: red_fox.id)
+Sighting.create(date: Date.new(2015, 12, 8), user_id: 1, park_id: grand_teton.id, species_id: bobcat.id)
+Sighting.create(date: Date.new(2015, 12, 10), user_id: 1, park_id: yellowstone.id, species_id: bobcat.id)
+Sighting.create(date: Date.new(2016, 12, 10), user_id: 1, park_id: yellowstone.id, species_id: black_bear.id)
+Sighting.create(date: Date.new(2017, 12, 10), user_id: 1, park_id: yellowstone.id, species_id: pine.id)
+Sighting.create(date: Date.new(2015, 10, 12), user_id: 2, park_id: yosemite.id, species_id: black_bear.id)
+Sighting.create(date: Date.new(2015, 10, 12), user_id: 2, park_id: yosemite.id, species_id: pine.id)
+Sighting.create(date: Date.new(2015, 10, 12), user_id: 2, park_id: yosemite.id, species_id: red_fox.id)

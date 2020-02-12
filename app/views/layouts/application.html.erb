@@ -32,7 +32,7 @@
           width: 100%;
           height:22px;
           color: white;
-          text-align: left;
+          text-align: center;
         }
       </style>
     </head>
@@ -59,9 +59,11 @@
     <%= yield %>
 
     <div class="footer">
-		<% if session[:user_id] %>
-        <%= link_to "Log Out", sessions_destroy_path %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= link_to "Log Out", destroy_user_session_url, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_url %>
+      <% end %>
     </div>
     <br>
   </body>

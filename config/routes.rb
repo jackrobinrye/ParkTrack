@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'users/show'
   devise_for :users
+  
   get 'species/index'
   get 'species/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -12,9 +15,9 @@ Rails.application.routes.draw do
 
     resources :species, only: [:index, :show]
 
-    resources :users, only: [:show, :new, :create]
+    resources :users, only: [:show]
 
-    resources :sessions, only: [:new, :create, :destroy]
+    # resources :sessions, only: [:new, :create, :destroy]
 
     root 'application#hello'
 
