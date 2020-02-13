@@ -11,7 +11,7 @@ class SightingsController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     sighting = Sighting.new(sighting_params)
     if sighting.save
       redirect_to sighting_path(sighting)

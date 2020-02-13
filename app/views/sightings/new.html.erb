@@ -16,15 +16,16 @@
         <br>
         <%= sf.label :kingdom, "Kingdom:" %>
         <%= sf.select(:kingdom, kingdoms, {include_blank: true}) %>
-
     <% end %>
+    
     <br>
     <br>
+
     <h3>Park</h3>
     <%= f.fields_for :parks do |pf| %>
         Existing Park:
         <%= pf.collection_select(:park_id, Park.all, :id, :name, prompt: true) %>
-        <emsp><h4>OR</h4>
+        <h4>OR</h4>
         Add New Park:<br>
         <%= pf.label :name, "Name:" %>
         <%= pf.text_field :name %>
@@ -36,6 +37,7 @@
         <%= pf.number_field :size %>
         <br>
     <% end %>
+            
+    <%= f.submit "Add Sighting" %>
 
-    <%= f.submit %>
 <% end %>
