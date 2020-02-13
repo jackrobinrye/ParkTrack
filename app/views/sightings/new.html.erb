@@ -1,24 +1,30 @@
-<h1>Sightings#new</h1>
+<h1>Add New Sighting!</h1>
 
 <%= form_for @sighting do |f| %>
     <h3>Date:</h3>
     <%= f.date_field :date, max: Date.today %><br>
     <br>
     
+    <h3>Species</h3>
     <%= f.fields_for :parks do |sf| %>
-        Name of Existing Species:
+        Existing Species:
         <%= sf.collection_select(:species_id, Species.all, :id, :name, prompt: true) %>
-        <emsp><br>OR<br>
+        <h4>OR</h4>
         Add New Species:<br>
         <%= sf.label :name, "Name:" %>
         <%= sf.text_field :name %>
+        <br>
+        <%= sf.label :kingdom, "Kingdom:" %>
+        <%= sf.select(:kingdom, kingdoms, {include_blank: true}) %>
+
     <% end %>
     <br>
     <br>
+    <h3>Park</h3>
     <%= f.fields_for :parks do |pf| %>
-        Name of Existing Park:
+        Existing Park:
         <%= pf.collection_select(:park_id, Park.all, :id, :name, prompt: true) %>
-        <emsp><br>OR<br>
+        <emsp><h4>OR</h4>
         Add New Park:<br>
         <%= pf.label :name, "Name:" %>
         <%= pf.text_field :name %>
@@ -31,8 +37,5 @@
         <br>
     <% end %>
 
-        
-
-    <%= f.label :user %>
-
+    <%= f.submit %>
 <% end %>

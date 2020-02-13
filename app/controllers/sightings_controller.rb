@@ -6,12 +6,12 @@ class SightingsController < ApplicationController
 
   def new
     @sighting = Sighting.new()
-    # byebug
     @user = @sighting.build_user
     @park = @sighting.build_park
   end
 
   def create
+    byebug
     sighting = Sighting.new(sighting_params)
     if sighting.save
       redirect_to sighting_path(sighting)
