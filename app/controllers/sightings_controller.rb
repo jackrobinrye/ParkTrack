@@ -6,6 +6,9 @@ class SightingsController < ApplicationController
 
   def new
     @sighting = Sighting.new()
+    # byebug
+    @user = @sighting.build_user
+    @park = @sighting.build_park
   end
 
   def create
