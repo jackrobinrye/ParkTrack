@@ -47,7 +47,10 @@
       <p style="text-align:center;">
         <%= link_to "Record A New Sighting!", new_sighting_path %>
       </p>
-      <br>
+    <% else %>
+      <p style="text-align:center;">
+        <%= link_to "Sign In", new_user_session_path %>
+      </p>
     <% end %>
 
     <%= yield %>
@@ -55,8 +58,6 @@
     <div class="footer">
       <% if user_signed_in? %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
       <% end %>
     </div>
     <br>

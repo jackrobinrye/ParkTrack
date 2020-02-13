@@ -1,9 +1,9 @@
-<% if arr != nil %>
+<% if arr.empty? || arr == "" %>
+    <li> Nothing yet! </li>
+<% else %>
     <ul>
         <% arr.each do |item| %>
             <li><%= link_to item.name, species_path(item) %></li>
         <% end %>
     </ul>
-<% else %>
-    <li> Nothing yet! </li>
 <% end %>

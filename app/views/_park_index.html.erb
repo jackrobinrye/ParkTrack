@@ -1,4 +1,4 @@
-<% if arr != nil %>
+<% if arr != nil && arr != "" %>
     <ul>
         <% arr.each do |item| %>
             <li><%= link_to item.name, park_path(item) %></li>
