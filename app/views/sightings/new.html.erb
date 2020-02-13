@@ -1,2 +1,7 @@
 <h1>Sightings#new</h1>
-<p>Find me in app/views/sightings/new.html.erb</p>
+<%= form_for @sighting do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+
+<% end %>
