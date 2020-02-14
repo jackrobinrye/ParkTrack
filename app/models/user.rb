@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+
+  has_many :sightings
+  has_many :species, through: :sightings
+  has_many :parks, through: :sightings
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

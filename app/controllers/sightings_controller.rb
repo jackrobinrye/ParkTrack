@@ -5,13 +5,14 @@ class SightingsController < ApplicationController
   end
 
   def new
-    @sighting = Sighting.new()
-    @user = @sighting.build_user
+    @sighting = current_user.sightings.build
+    @species = @sighting.build_species
     @park = @sighting.build_park
   end
 
   def create
-    # byebug
+    
+    byebug
     sighting = Sighting.new(sighting_params)
     if sighting.save
       redirect_to sighting_path(sighting)
@@ -33,7 +34,9 @@ class SightingsController < ApplicationController
   # t.integer "user_id"
 
   def sighting_params
-    params.require(:sighting).permit(:date, :park_id, :species_id, :user_id)
+    params.require(:sighting).permit(:date, :species, :parks, :user_id)
   end
+
+
 
 end

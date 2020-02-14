@@ -6,26 +6,22 @@
     <br>
     
     <h3>Species</h3>
-    <%= f.fields_for :parks do |sf| %>
-        Existing Species:
-        <%= sf.collection_select(:species_id, Species.all, :id, :name, prompt: true) %>
-        <h4>OR</h4>
-        Add New Species:<br>
+    <%= f.fields_for :species do |sf| %>
         <%= sf.label :name, "Name:" %>
         <%= sf.text_field :name %>
         <br>
         <%= sf.label :kingdom, "Kingdom:" %>
         <%= sf.select(:kingdom, kingdoms, {include_blank: true}) %>
     <% end %>
-    
+
     <br>
     <br>
 
     <h3>Park</h3>
+    Existing Park:
+    <%= f.collection_select(:park_id, Park.all, :id, :name, prompt: true) %>
+    <h4>OR</h4>
     <%= f.fields_for :parks do |pf| %>
-        Existing Park:
-        <%= pf.collection_select(:park_id, Park.all, :id, :name, prompt: true) %>
-        <h4>OR</h4>
         Add New Park:<br>
         <%= pf.label :name, "Name:" %>
         <%= pf.text_field :name %>
@@ -37,6 +33,8 @@
         <%= pf.number_field :size %>
         <br>
     <% end %>
+
+    <%= f.hidden_field(:user_id, value: @sighting.user_id) %>
             
     <%= f.submit "Add Sighting" %>
 
