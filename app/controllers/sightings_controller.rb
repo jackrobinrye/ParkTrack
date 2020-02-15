@@ -1,7 +1,7 @@
 class SightingsController < ApplicationController
 
   def show
-    @sighting = Sightning.find(params[:id])
+    @sighting = Sighting.find(params[:id])
   end
 
   def new
@@ -9,32 +9,33 @@ class SightingsController < ApplicationController
     @species = @sighting.build_species
     @park = @sighting.build_park
   end
-
+  
   def create
     
-    byebug
-    sighting = Sighting.new(sighting_params)
-    if sighting.save
-      redirect_to sighting_path(sighting)
+    @sighting = Sighting.new(sighting_params)
+    
+    # byebug
+    if @sighting.save
+      redirect_to sighting_path(@sighting)
     else 
-      flash.alert = "Oh no! Something went wrong. Please fill in all fields!"
+      flash.alert = "Oh no! Something went wrong. Please fill in all fields properly!"
       render :new
     end 
   end 
-
+  
   def edit
   end
-
-
+  
+  
   private
-
+  
   # t.date "date"
   # t.integer "park_id"
   # t.integer "species_id"
   # t.integer "user_id"
-
+  
   def sighting_params
-    params.require(:sighting).permit(:date, :species, :parks, :user_id)
+    params.require(:sighting).permit(:date, :park_id, :user_id, park_attributes: [:name, :location, :size],  species_attributes: [:name, :kingdom])
   end
 
 
