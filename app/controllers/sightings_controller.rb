@@ -10,7 +10,6 @@ class SightingsController < ApplicationController
 
   def index
     @sightings = Sighting.user_is_current(current_user.id)
-    byebug
   end
 
   def new
@@ -49,11 +48,11 @@ class SightingsController < ApplicationController
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+    return head(:forbidden) unless session.include? :session_id
   end
 
   def require_be_current_user
-    return head(:forbidden) unless session[:user_id] == current_user.id
+    return head(:forbidden) unless session_user_id == current_user.id
   end
 
 end

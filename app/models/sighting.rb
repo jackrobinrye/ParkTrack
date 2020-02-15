@@ -9,7 +9,7 @@ class Sighting < ApplicationRecord
 
 
     def self.user_is_current(id)
-        @species = Species.where(user_id: id)
+        Sighting.where(user_id: id)
     end 
 
     def species_attributes=(species)
