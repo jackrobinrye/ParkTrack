@@ -52,7 +52,14 @@ class SightingsController < ApplicationController
   end
 
   def require_be_current_user
-    return head(:forbidden) unless session_user_id == current_user.id
+    unless current_sighting_user_id == current_user.id
+      flash[:notice] = "Sorry! You can't look at this sighting. It belongs to another user."
+      redirect_to root_url 
+    end
+  end
+
+  def current_sighting_user_id
+    Sighting.find(params[:id]).user_id
   end
 
 end
