@@ -4,6 +4,10 @@ class SightingsController < ApplicationController
     @sighting = Sighting.find(params[:id])
   end
 
+  def index
+    @sightings = Sighting.user_is_current(current_user.id)
+  end
+
   def new
     @parks = alphabetize(Park.all)
     @sighting = current_user.sightings.build

@@ -7,6 +7,11 @@ class Sighting < ApplicationRecord
     validates :park_id, presence: true 
     validates :date, presence: true
 
+
+    def self.user_is_current(id)
+        @species = Species.where("user_id = ?", id)
+    end 
+
     def species_attributes=(species)
         if this_species = Species.find_by(name: species[:name])
             self.species = this_species
