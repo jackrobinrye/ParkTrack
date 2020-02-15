@@ -1,11 +1,16 @@
 class SightingsController < ApplicationController
 
+  before_action :require_login
+  before_action :require_be_current_user
+  skip_before_action :require_be_current_user, only: [:new, :create, :edit, :update]
+
   def show
     @sighting = Sighting.find(params[:id])
   end
 
   def index
     @sightings = Sighting.user_is_current(current_user.id)
+    byebug
   end
 
   def new
@@ -43,6 +48,12 @@ class SightingsController < ApplicationController
     params.require(:sighting).permit(:date, :user_id, park_attributes: [:id, :name, :location, :size],  species_attributes: [:name, :kingdom])
   end
 
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
 
+  def require_be_current_user
+    return head(:forbidden) unless session[:user_id] == current_user.id
+  end
 
 end
