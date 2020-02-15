@@ -36,7 +36,7 @@
     <h3>Park</h3>
     <%= f.fields_for :park do |pf| %>
         Existing Park:
-        <%= pf.collection_select(:id, Park.all, :id, :name, prompt: true) %>
+        <%= pf.collection_select(:id, @parks, :id, :name, prompt: true) %>
         <h4>OR</h4>
         Add New Park:<br>
         <%= pf.label :name, "Name:" %>

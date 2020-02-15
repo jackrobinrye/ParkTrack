@@ -5,6 +5,7 @@ class SightingsController < ApplicationController
   end
 
   def new
+    @parks = alphabetize(Park.all)
     @sighting = current_user.sightings.build
     @species = @sighting.build_species
     @park = @sighting.build_park
@@ -35,7 +36,7 @@ class SightingsController < ApplicationController
   # t.integer "user_id"
   
   def sighting_params
-    params.require(:sighting).permit(:date, :park_id, :user_id, park_attributes: [:name, :location, :size],  species_attributes: [:name, :kingdom])
+    params.require(:sighting).permit(:date, :user_id, park_attributes: [:id, :name, :location, :size],  species_attributes: [:name, :kingdom])
   end
 
 

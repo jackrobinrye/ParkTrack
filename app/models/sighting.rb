@@ -5,13 +5,18 @@ class Sighting < ApplicationRecord
 
     validates :species_id, presence: true
     validates :park_id, presence: true 
+    validates :date, presence: true
 
     def species_attributes=(species)
-        # byebug
-        self.species = Species.find_or_create_by(species)
+        if this_species = Species.find_by(name: species[:name])
+            self.species = this_species
+        else 
+            self.species = Species.create(species)
+        end
     end
 
     def park_attributes=(park)
+        # byebug
         if park[:id]
             self.park = Park.find(park[:id])
         elsif park[:name]
