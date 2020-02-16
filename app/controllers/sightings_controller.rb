@@ -11,8 +11,13 @@ class SightingsController < ApplicationController
   end
 
   def index
-    @dates = Sighting.ordered_dates(current_user.id)
-    @sightings = Sighting.where(user_id: current_user.id)
+    if pid = params[:park_id]
+      @dates = Sighting.where(park_id: pid).ordered_dates(current_user.id)
+      # @sightings = Sighting.where(user_id: current_user.id).where(park_id: pid)
+    else 
+      @dates = Sighting.ordered_dates(current_user.id)
+      # @sightings = Sighting.where(user_id: current_user.id)
+    end
   end
 
   def new
