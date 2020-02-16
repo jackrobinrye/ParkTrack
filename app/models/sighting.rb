@@ -22,7 +22,7 @@ class Sighting < ApplicationRecord
     end
 
     def park_attributes=(park)
-        # byebug
+        byebug
         if park[:id]
             self.park = Park.find(park[:id])
         elsif park[:name]

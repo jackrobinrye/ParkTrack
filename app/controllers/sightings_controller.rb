@@ -13,10 +13,8 @@ class SightingsController < ApplicationController
   def index
     if pid = params[:park_id]
       @dates = Sighting.where(park_id: pid).ordered_dates(current_user.id)
-      # @sightings = Sighting.where(user_id: current_user.id).where(park_id: pid)
     else 
       @dates = Sighting.ordered_dates(current_user.id)
-      # @sightings = Sighting.where(user_id: current_user.id)
     end
   end
 
@@ -24,14 +22,12 @@ class SightingsController < ApplicationController
     @parks = alphabetize(Park.all)
     @sighting = current_user.sightings.build
     @species = @sighting.build_species
-    @park = @sighting.build_park
+    @park = @sighting.build_park unless @park_id = params[:park_id]
   end
   
   def create
-    
     @sighting = Sighting.new(sighting_params)
-    
-    # byebug
+    byebug
     if @sighting.save
       redirect_to sighting_path(@sighting)
     else 
@@ -46,13 +42,8 @@ class SightingsController < ApplicationController
   
   private
   
-  # t.date "date"
-  # t.integer "park_id"
-  # t.integer "species_id"
-  # t.integer "user_id"
-  
   def sighting_params
-    params.require(:sighting).permit(:date, :user_id, park_attributes: [:id, :name, :location, :size],  species_attributes: [:name, :kingdom])
+    params.require(:sighting).permit(:date, :user_id, :park_id, park_attributes: [:id, :name, :location, :size],  species_attributes: [:name, :kingdom])
   end
 
   def require_login
