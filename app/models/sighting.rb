@@ -3,6 +3,7 @@ class Sighting < ApplicationRecord
     belongs_to :species
     belongs_to :park
 
+
     validates :species_id, presence: true
     validates :park_id, presence: true 
     validates :date, presence: true

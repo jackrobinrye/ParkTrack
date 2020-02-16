@@ -2,6 +2,9 @@ class SightingsController < ApplicationController
 
   before_action :require_login
 
+  helper_method :sighting_by_date
+
+
   def show 
     require_be_current_user
     @sighting = Sighting.find(params[:id])
@@ -60,6 +63,10 @@ class SightingsController < ApplicationController
 
   def current_sighting_user_id
     Sighting.find(params[:id]).user_id
+  end
+
+  def sighting_by_date(date)
+    Sighting.by_date(date)
   end
 
 end

@@ -1,6 +1,9 @@
-<% arr.each do |sighting| %>
+<h2>Sightings:</h2>
+<% dates.each do |date| %>
+    <h3><%= date.strftime("%B %e, %Y") %></h3>
     <ul>
-        <li>You saw a <%= link_to sighting.species.name, species_path(sighting.species) %> on <%= sighting.date.strftime("%B %e, %Y") %> in <%= link_to "#{sighting.park.name} National Park", park_path(sighting.park) %>. </li>
-
+    <% sighting_by_date(date).each do |sighting| %>
+        <li><%= link_to sighting.species.name, sighting_path(sighting) %></li>
+    <% end %>
     </ul>
 <% end %>
