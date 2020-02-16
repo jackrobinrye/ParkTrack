@@ -1,5 +1,2 @@
-<% @sightings.each do |sighting| %>
-    <ul>
-        <li><%= sighting.species.name %></li>
-    </ul>
-<% end %>
+<%= render partial: "./sightings_index", locals: {arr: @sightings} %>
+Dates: <%= @dates %>

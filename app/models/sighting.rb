@@ -8,7 +8,7 @@ class Sighting < ApplicationRecord
     validates :date, presence: true
 
 
-    def self.user_is_current(id)
+    def self.user_is(id)
         Sighting.where(user_id: id)
     end 
 
@@ -35,5 +35,17 @@ class Sighting < ApplicationRecord
 
         end 
     end
+    
+    def self.ordered_dates(id)
+        dates = []
+        self.where(user_id: id).order(:date).map do |sighting|
+            dates << sighting.date
+        end.uniq!
+    end 
+    
+    def self.by_date(date)
+        self.where(date: date).order(:name)
+    end
+    
 
 end

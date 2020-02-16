@@ -1,0 +1,6 @@
+<% arr.each do |sighting| %>
+    <ul>
+        <li>You saw a <%= link_to sighting.species.name, species_path(sighting.species) %> on <%= sighting.date.strftime("%B %e, %Y") %> in <%= link_to "#{sighting.park.name} National Park", park_path(sighting.park) %>. </li>
+
+    </ul>
+<% end %>

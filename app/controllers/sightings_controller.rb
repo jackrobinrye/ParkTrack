@@ -8,8 +8,8 @@ class SightingsController < ApplicationController
   end
 
   def index
-    @sightings = Sighting.user_is_current(current_user.id)
-    # byebug
+    @dates = Sighting.ordered_dates(current_user.id)
+    @sightings = Sighting.where(user_id: current_user.id)
   end
 
   def new
