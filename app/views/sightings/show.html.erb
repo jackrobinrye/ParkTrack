@@ -1,6 +1,4 @@
-<h1>Sightings#show</h1>
-<%= @sighting.species.name %><br>
-<%= @sighting.species.id %><br>
-<%= @sighting.park.name %><br>
-<%= @sighting.park.id %><br>
-<%= @sighting.date %>
+<h2>A wild <%= @sighting.species.name %> appeared!</h2>
+<h3> You spotted a <%= link_to @sighting.species.name, species_path(@sighting.species) %> on <%= @sighting.date.strftime("%B %e, %Y") %> in <%= link_to "#{@sighting.park.name} National Park", park_path(@sighting.park) %>. </h3>
+
+

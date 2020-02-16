@@ -1,15 +1,15 @@
 class SightingsController < ApplicationController
 
   before_action :require_login
-  before_action :require_be_current_user
-  skip_before_action :require_be_current_user, only: [:new, :create, :edit, :update]
 
-  def show
+  def show 
+    require_be_current_user
     @sighting = Sighting.find(params[:id])
   end
 
   def index
     @sightings = Sighting.user_is_current(current_user.id)
+    # byebug
   end
 
   def new
@@ -53,7 +53,7 @@ class SightingsController < ApplicationController
 
   def require_be_current_user
     unless current_sighting_user_id == current_user.id
-      flash[:notice] = "Sorry! You can't look at this sighting. It belongs to another user."
+      flash.alert = "Sorry! You can't look at this sighting. It belongs to another user."
       redirect_to root_url 
     end
   end
