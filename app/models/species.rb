@@ -5,4 +5,23 @@ class Species < ApplicationRecord
 
     validates :name, presence: true
     validates :kingdom, presence: true
+
+    def self.kingdoms
+        ['Animalia', 'Plantae', "Fungi"]
+    end
+
+    def self.kingdom(arr, kingdom_name)
+        arr.map do |species|
+            if species.kingdom == kingdom_name
+                species
+            end
+        end.compact!
+    end
+
+
+
+
+
+    # def self.name=(name)
+    # end
 end

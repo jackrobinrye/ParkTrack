@@ -32,7 +32,9 @@ red_fox = Species.create(name: "Red Fox", kingdom: "Animalia")
 black_bear = Species.create(name: "Black Bear", kingdom: "Animalia")
 pine = Species.create(name: "Pine Tree", kingdom: "Plantae")
 
-
+# bobcat = Species.find(1)
+# red_fox = Species.find(2)
+# pine = Species.find(4)
 
 #   create_table "users", force: :cascade do |t|
 #     t.string "email"

@@ -7,6 +7,7 @@ class Sighting < ApplicationRecord
     validates :species_id, presence: true
     validates :park_id, presence: true 
     validates :date, presence: true
+    validates :date, uniqueness: { scope: [:species_id, :park_id], message: ->(object, data) { "You already made this entry!" }}
 
 
     def self.user_is(id)
@@ -22,7 +23,6 @@ class Sighting < ApplicationRecord
     end
 
     def park_attributes=(park)
-        byebug
         if park[:id]
             self.park = Park.find(park[:id])
         elsif park[:name]
@@ -41,7 +41,8 @@ class Sighting < ApplicationRecord
         dates = []
         self.where(user_id: id).order(:date).map do |sighting|
             dates << sighting.date
-        end.uniq!
+        end
+        dates.uniq!
     end 
     
     def self.by_date(date)

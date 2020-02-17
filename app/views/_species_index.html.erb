@@ -1,9 +1,44 @@
 <% if arr.empty? || arr == "" %>
     <li> Nothing yet! </li>
 <% else %>
+
+<% Species.kingdoms.each do |kname| %>
+    <% unless Species.kingdom(arr, kname).empty? %>
+        <h3><%= kname %>:</h3>
+        <ul>
+        <% Species.kingdom(arr, kname).each do |species| %>
+            <li><%= link_to species.name, species_path(species) %></li>
+        <% end %>
+        </ul>
+    <% end %>
+<% end %>
+
+
+
+
+
+<% if false %>
+    <h2>Animalia:</h2>
     <ul>
-        <% arr.each do |item| %>
+        <% Species.animalia(arr).compact!.each do |item| %>
             <li><%= link_to item.name, species_path(item) %></li>
         <% end %>
     </ul>
+
+    <h2>Plantae:</h2>
+    <ul>
+        <% Species.plantae(arr).compact!.each do |item| %>
+            <li><%= link_to item.name, species_path(item) %></li>
+        <% end %>
+    </ul>
+
+    <h2>Fungi:</h2>
+    <ul>
+        <% Species.fungi(arr).compact!.each do |item| %>
+            <li><%= link_to item.name, species_path(item) %></li>
+        <% end %>
+    </ul>
+
+<% end %>
+
 <% end %>

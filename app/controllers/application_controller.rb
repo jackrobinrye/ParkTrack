@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
     
     before_action :configure_permitted_parameters, if: :devise_controller?
     helper_method :user_signed_in?
+    helper_method :kingdoms
+    helper_method :kingdom
 
     def alphabetize(arr)
         arr.sort { |a,b| a.name <=> b.name}
@@ -11,6 +13,8 @@ class ApplicationController < ActionController::Base
         @parks = alphabetize(Park.all)
         @species = alphabetize(Species.all) 
     end 
+
+
 
 
     protected

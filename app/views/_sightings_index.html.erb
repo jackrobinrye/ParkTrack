@@ -3,7 +3,7 @@
     <h3><%= date.strftime("%B %e, %Y") %></h3>
     <ul>
     <% sighting_by_date(date).each do |sighting| %>
-        <li><%= link_to sighting.species.name, sighting_path(sighting) %></li>
+        <li><%= link_to sighting.species.name, sighting_path(sighting) %> in <%= link_to "#{sighting.park.name} National Park", park_path(sighting.park) %> </li>
     <% end %>
     </ul>
 <% end %>

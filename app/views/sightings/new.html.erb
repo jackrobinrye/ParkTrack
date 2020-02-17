@@ -34,7 +34,7 @@
     <br>
     
     <% if @park_id %>
-    <%= f.hidden_field(:park_id, value: @sighting.park_id) %>
+      <%= hidden_field_tag(:park_id, @park_id) %>
     <% else %> 
       <h3>Park</h3>
       <%= f.fields_for :park do |pf| %>

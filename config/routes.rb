@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
     resources :species, only: [:index, :show]
 
-    resources :users, only: [:show]
+    get '/dashboard', to: 'users#show' 
+
+    # resources :users, only: [:show]
 
     # resources :sessions, only: [:new, :create, :destroy]
 
