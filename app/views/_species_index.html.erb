@@ -2,11 +2,11 @@
     <li> Nothing yet! </li>
 <% else %>
 
-<% Species.kingdoms.each do |kname| %>
-    <% unless Species.kingdom(arr, kname).empty? %>
+<% Species.these_kingdoms.each do |kname| %>
+    <% unless Species.this_kingdom(arr, kname).empty? %>
         <h3><%= kname %>:</h3>
         <ul>
-        <% Species.kingdom(arr, kname).each do |species| %>
+        <% Species.this_kingdom(arr, kname).each do |species| %>
             <li><%= link_to species.name, species_path(species) %></li>
         <% end %>
         </ul>

@@ -1,2 +1,44 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>'s Info and Adventures</h1>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="column">
+    <h2>Species</h2>
+    <%= render partial: "./species_index", locals: {arr: @user.species} %>
+  </div>
+  <div class="column">
+    <h2>National Parks</h2>
+    <%= render partial: "./park_index", locals: {arr: @user.parks} %>
+  </div>
+  <div class="column">
+  hello
+  <% if false %>
+  <%= render partial: "./sightings_index", locals: {dates: @dates} %>
+  <% end %>
+  </div>
+</div>
+
+</body>

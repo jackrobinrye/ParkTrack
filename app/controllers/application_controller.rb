@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
     helper_method :user_signed_in?
     helper_method :kingdoms
     helper_method :kingdom
+    helper_method :sighting_by_date
+
 
     def alphabetize(arr)
         arr.sort { |a,b| a.name <=> b.name}

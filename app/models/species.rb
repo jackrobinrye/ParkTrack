@@ -6,11 +6,11 @@ class Species < ApplicationRecord
     validates :name, presence: true
     validates :kingdom, presence: true
 
-    def self.kingdoms
+    def self.these_kingdoms
         ['Animalia', 'Plantae', "Fungi"]
     end
 
-    def self.kingdom(arr, kingdom_name)
+    def self.this_kingdom(arr, kingdom_name)
         arr.map do |species|
             if species.kingdom == kingdom_name
                 species
