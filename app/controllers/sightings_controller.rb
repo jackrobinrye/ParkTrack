@@ -33,7 +33,6 @@ class SightingsController < ApplicationController
       @parks = alphabetize(Park.all)
       @sighting.species ||= @sighting.build_species
       @sighting.park ||= @sighting.build_park unless @park_id = params[:park_id]
-      byebug
       render :new
     end 
   end 
@@ -46,7 +45,6 @@ class SightingsController < ApplicationController
 
   def destroy
   end 
-  
   
   private
   
@@ -69,8 +67,6 @@ class SightingsController < ApplicationController
     Sighting.find(params[:id]).user_id
   end
 
-  def sighting_by_date(date)
-    Sighting.by_date(date)
-  end
+  
 
 end

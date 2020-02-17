@@ -27,7 +27,7 @@
         <%= sf.text_field :name %>
         <br>
         <%= sf.label :kingdom, "Kingdom:" %>
-        <%= sf.select(:kingdom, kingdoms, {include_blank: true}) %>
+        <%= sf.select(:kingdom, Species.kingdoms, {include_blank: true}) %>
     <% end %>
 
     <br>

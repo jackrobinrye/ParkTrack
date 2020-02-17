@@ -2,7 +2,7 @@
     <li> Nothing yet! </li>
 <% else %>
 
-<% Species.these_kingdoms.each do |kname| %>
+<% Species.kingdoms.each do |kname| %>
     <% unless Species.this_kingdom(arr, kname).empty? %>
         <h3><%= kname %>:</h3>
         <ul>

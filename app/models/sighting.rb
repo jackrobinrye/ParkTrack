@@ -23,7 +23,7 @@ class Sighting < ApplicationRecord
     end
 
     def park_attributes=(park)
-        if park[:id]
+        if !park[:id].empty?
             self.park = Park.find(park[:id])
         elsif park[:name]
             park[:name] = park[:name].titlecase
