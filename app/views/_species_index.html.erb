@@ -3,7 +3,7 @@
 <% else %>
 
 <% Species.kingdoms.each do |kname| %>
-    <% unless Species.this_kingdom(arr, kname).empty? %>
+    <% if Species.this_kingdom(arr, kname) != "" && Species.this_kingdom(arr, kname) != [] && !!Species.this_kingdom(arr, kname) %>
         <h3><%= kname %>:</h3>
         <ul>
         <% Species.this_kingdom(arr, kname).each do |species| %>

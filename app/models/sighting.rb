@@ -42,7 +42,7 @@ class Sighting < ApplicationRecord
         self.where(user_id: id).order(:date).map do |sighting|
             dates << sighting.date
         end
-        dates.uniq!
+        dates.uniq
     end 
     
     def self.by_date(date)

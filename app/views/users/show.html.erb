@@ -34,6 +34,7 @@
     <%= render partial: "./park_index", locals: {arr: @user.parks.uniq} %>
   </div>
   <div class="column">
+    <h2>Sightings</h2>
   <%= render partial: "./sightings_index", locals: {dates: @dates} %>
   </div>
 </div>
