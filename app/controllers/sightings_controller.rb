@@ -9,10 +9,8 @@ class SightingsController < ApplicationController
 
   def index
     if pid = params[:park_id]
-      # byebug
       @dates = Sighting.where(park_id: pid).ordered_dates(current_user.id)
     else 
-      # byebug
       @dates = Sighting.ordered_dates(current_user.id)
     end
   end
@@ -25,9 +23,9 @@ class SightingsController < ApplicationController
   end
   
   def create
+    # byebug
     @sighting = Sighting.new(sighting_params)
     if @sighting.save
-      # byebug
       redirect_to sighting_path(@sighting)
     else 
       @parks = alphabetize(Park.all)
@@ -38,6 +36,10 @@ class SightingsController < ApplicationController
   end 
   
   def edit
+    @parks = alphabetize(Park.all)
+    @sighting = Sighting.find(params[:id])
+    @sighting.species = @sighting.build_species unless @sighting.species
+    @sighting.park = @sighting.build_park unless @park_id = params[:park_id]
   end
 
   def update

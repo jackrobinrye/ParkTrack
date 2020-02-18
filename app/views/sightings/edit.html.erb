@@ -1,2 +1,2 @@
-<h1>Sightings#edit</h1>
-<p>Find me in app/views/sightings/edit.html.erb</p>
+<h1>Edit Sighting</h1>
+<%= render partial: "form", locals: {sighting: @sighting, pid: @park_id, parks: @parks} %>

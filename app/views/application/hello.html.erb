@@ -1,7 +1,35 @@
 <h1>Welcome To ParkTrack!</h1>
-<h2>National Parks:</h2>
-<%= render partial: "./park_index", locals: {arr: @parks} %>
-<h2>Species:</h2>
-<%= render partial: "./species_index", locals: {arr: @species} %>
 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="column">
+    <h2>Species</h2>
+    <%= render partial: "./species_index", locals: {arr: @species} %>
+  </div>
+  <div class="column">
+    <h2>National Parks</h2>
+    <%= render partial: "./park_index", locals: {arr: @parks} %>
+</div>

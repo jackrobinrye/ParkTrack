@@ -1,0 +1,60 @@
+<% if @sighting.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(sighting.errors.count, "error") %>
+      prohibited this sighting from being saved:
+    </h2>
+ 
+    <ul>
+    <% sighting.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field_with_errors">
+<%= form_for sighting do |f| %>
+    <h3>Date:</h3>
+    <%= f.date_field :date, max: Date.today %><br>
+    <br>
+    
+    <h3>Species</h3>
+    <%= f.fields_for :species do |sf| %>
+        <%= sf.label :name, "Name:" %>
+        <%= sf.text_field :name %>
+        <br>
+        <%= sf.label :kingdom, "Kingdom:" %>
+        <%= sf.select(:kingdom, Species.kingdoms, {include_blank: true}) %>
+    <% end %>
+
+    <br>
+    <br>
+    
+    <% if pid %>
+      <%= hidden_field_tag(:park_id, pid) %>
+    <% else %> 
+      <h3>Park</h3>
+      <%= f.fields_for :park do |pf| %>
+          Existing Park:
+          <%= pf.collection_select(:id, parks, :id, :name, prompt: true) %>
+          <h4>OR</h4>
+          Add New Park:<br>
+          <%= pf.label :name, "Name:" %>
+          <%= pf.text_field :name %>
+          <br>
+          <%= pf.label :location, "State:" %>
+          <%= pf.select(:location, us_states, {include_blank: true}) %>
+          <br>
+          <%= pf.label :size, "Size (square miles):" %>
+          <%= pf.number_field :size %>
+          <br>
+      <% end %>
+    <% end %>
+      
+      
+    <%= f.hidden_field(:user_id, value: sighting.user_id) %>
+            
+    <%= f.submit "Add Sighting" %>
+<% end %>
+</div>
