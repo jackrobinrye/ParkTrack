@@ -6,8 +6,26 @@ class SightingsController < ApplicationController
     require_be_current_user
     @sighting = Sighting.find(params[:id])
   end
+  # id: 9,
+  # date: Mon, 17 Feb 2020,
+  # user_id: 1,
+  # park_id: 1,
+  # species_id: 7,
+
+  # id: 10,
+  # date: Mon, 17 Feb 2020,
+  # user_id: 1,
+  # park_id: 1,
+  # species_id: 1,
+
+  # id: 18,
+  # date: Mon, 17 Feb 2020,
+  # user_id: 1,
+  # park_id: 2,
+  # species_id: 1,
 
   def index
+    # byebug
     if pid = params[:park_id]
       @dates = Sighting.where(park_id: pid).ordered_dates(current_user.id)
     else 
@@ -39,10 +57,20 @@ class SightingsController < ApplicationController
     @parks = alphabetize(Park.all)
     @sighting = Sighting.find(params[:id])
     @sighting.species = @sighting.build_species unless @sighting.species
-    @sighting.park = @sighting.build_park unless @park_id = params[:park_id]
+    
+    @sighting.park = @sighting.build_park unless @sighting.park_id
   end
 
   def update
+    @sighting = Sighting.find(params[:id])
+    if @sighting.update(sighting_params)
+      redirect_to sighting_path(@sighting)
+    else 
+      @parks = alphabetize(Park.all)
+      @sighting.species ||= @sighting.build_species
+      @sighting.park ||= @sighting.build_park unless @park_id = params[:park_id]
+      render :new
+    end 
   end 
 
   def destroy

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
 
     def sighting_by_date(date)
-      Sighting.by_date(date)
+      Sighting.by_date(date).where(user_id: current_user.id)
     end
 
 
