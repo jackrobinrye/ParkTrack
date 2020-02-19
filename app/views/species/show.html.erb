@@ -1,4 +1,5 @@
 <h1><%= @species.name %></h1>
+<h2>This species belongs to the <%= @species.kingdom %> kingdom.</h2>
 <h2>Parks this species is found in:</h2>
 
 <%= render partial: "./park_index", locals: {arr: @parks} %>

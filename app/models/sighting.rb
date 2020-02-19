@@ -7,7 +7,7 @@ class Sighting < ApplicationRecord
     validates :species_id, presence: true
     validates :park_id, presence: true 
     validates :date, presence: true
-    validates :date, uniqueness: { scope: [:species_id, :park_id], message: ->(object, data) { "You already made this entry!" }}
+    validates :date, uniqueness: { scope: [:species_id, :park_id], message: ->(object, data) { ": You already made this entry!" }}
 
 
     def self.user_is(id)
