@@ -6,5 +6,6 @@ class ParksController < ApplicationController
   def show
     @park = Park.find(params[:id])
     @species = alphabetize(@park.species.uniq)
+    # byebug
   end
 end

@@ -7,4 +7,8 @@ class Park < ApplicationRecord
     validates :size, presence: true
     validates :location, presence: true
 
+    def name=(name)
+        super(name.titleize)
+    end
+
 end

@@ -41,9 +41,9 @@ class SightingsController < ApplicationController
   end
   
   def create
-    # byebug
     @sighting = Sighting.new(sighting_params)
     if @sighting.save
+      # byebug
       redirect_to sighting_path(@sighting)
     else 
       @parks = alphabetize(Park.all)

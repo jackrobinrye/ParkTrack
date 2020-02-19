@@ -15,11 +15,9 @@ class Species < ApplicationRecord
     end
 
     def self.this_kingdom(arr, kingdom_name)
-        arr.map do |species|
-            if species.kingdom == kingdom_name
-                species
-            end
-        end.compact!
+        arr.select do |species|
+            species.kingdom == kingdom_name
+        end
     end
 
 

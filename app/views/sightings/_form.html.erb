@@ -35,10 +35,10 @@
       <%= hidden_field_tag(:park_id, pid) %>
     <% else %> 
       <h3>Park</h3>
+      Existing Park:
+      <%= f.collection_select(:park_id, parks, :id, :name, prompt: true) %>
+      <h4>OR</h4>
       <%= f.fields_for :park, Park.new do |pf| %>
-          Existing Park:
-          <%= pf.collection_select(:id, parks, :id, :name, prompt: true) %>
-          <h4>OR</h4>
           Add New Park:<br>
           <%= pf.label :name, "Name:" %>
           <%= pf.text_field :name %>
