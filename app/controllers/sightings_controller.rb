@@ -57,7 +57,6 @@ class SightingsController < ApplicationController
     @parks = alphabetize(Park.all)
     @sighting = Sighting.find(params[:id])
     @sighting.species = @sighting.build_species unless @sighting.species
-
     @sighting.park = @sighting.build_park unless @sighting.park_id
   end
 

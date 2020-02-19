@@ -6,9 +6,9 @@ class Species < ApplicationRecord
     validates :name, presence: true
     validates :kingdom, presence: true
 
-    # def name=(name)
-    #     self.name = name.titleize
-    # end
+    def name=(name)
+        super(name.titleize)
+    end
 
     def self.kingdoms
         ['Animalia', 'Plantae', "Fungi"]
