@@ -2,17 +2,6 @@
     <li> Nothing yet! </li>
 <% else %>
 
-<% if false %>
-    <% arr.each do |k, v| %>
-        <h3><%= k %></h3>
-        <ul>
-            <% v.each do |name| %>
-                <li><%= name %></li>
-            <% end %>
-        </ul>
-    <% end %>
-<% end %>
-
 <% Species.kingdoms.each do |kname| %>
     <% if !Species.this_kingdom(arr, kname).empty? %>
         <h3><%= kname %>:</h3>
@@ -23,10 +12,6 @@
         </ul>
     <% end %>
 <% end %>
-
-
-
-
 
 <% if false %>
     <h2>Animalia:</h2>

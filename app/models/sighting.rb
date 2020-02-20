@@ -15,7 +15,7 @@ class Sighting < ApplicationRecord
     end 
 
     def species_attributes=(species)
-        if this_species = Species.find_by(name: species[:name])
+        if this_species = Species.find_by(name: species[:name], kingdom: species[:kingdom])
             self.species = this_species
         else 
             self.species = Species.create(species)

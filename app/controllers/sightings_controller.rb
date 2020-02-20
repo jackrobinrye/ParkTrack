@@ -8,7 +8,6 @@ class SightingsController < ApplicationController
   end
 
   def index
-    # byebug
     if pid = params[:park_id]
       @dates = Sighting.where(park_id: pid).ordered_dates(current_user.id)
     else 
@@ -25,7 +24,6 @@ class SightingsController < ApplicationController
   
   def create
     @sighting = Sighting.new(sighting_params)
-    byebug
     if @sighting.save
       redirect_to sighting_path(@sighting)
     else 
