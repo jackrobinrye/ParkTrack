@@ -32,7 +32,7 @@
     <br>
     
     <% if pid %>
-      <%= hidden_field_tag(:park_id, pid) %>
+      <%= hidden_field_tag :"sighting[park_id]", pid %>
     <% else %> 
       <h3>Park</h3>
       Existing Park:

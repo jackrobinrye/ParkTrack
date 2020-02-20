@@ -6,23 +6,6 @@ class SightingsController < ApplicationController
     require_be_current_user
     @sighting = Sighting.find(params[:id])
   end
-  # id: 9,
-  # date: Mon, 17 Feb 2020,
-  # user_id: 1,
-  # park_id: 1,
-  # species_id: 7,
-
-  # id: 10,
-  # date: Mon, 17 Feb 2020,
-  # user_id: 1,
-  # park_id: 1,
-  # species_id: 1,
-
-  # id: 18,
-  # date: Mon, 17 Feb 2020,
-  # user_id: 1,
-  # park_id: 2,
-  # species_id: 1,
 
   def index
     # byebug
@@ -42,8 +25,8 @@ class SightingsController < ApplicationController
   
   def create
     @sighting = Sighting.new(sighting_params)
+    byebug
     if @sighting.save
-      # byebug
       redirect_to sighting_path(@sighting)
     else 
       @parks = alphabetize(Park.all)
