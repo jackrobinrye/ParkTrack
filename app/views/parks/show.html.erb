@@ -1,5 +1,6 @@
 <h1><%= "#{@park.name} National Park" %></h1>
 <h3>You can find his park in <%= @park.location %>. It is <%= @park.size %> square miles.</h3>
+<p><%= link_to "Add Sighting", new_park_sighting_path(@park) %></p>
 <br>
 <h2>Species found in this park:</h2>
 
