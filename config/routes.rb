@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
     resources :sightings
 
-    resources :species, only: [:index, :show]
+    resources :species, only: [:index, :show] do 
+      resources :users, only: [:index]
+    end 
 
     get '/dashboard', to: 'users#show' 
 
