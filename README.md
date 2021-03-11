@@ -11,3 +11,11 @@ The main 3 models in this project are Sightings, Parks, and Species. The Sightin
 ## Development
 
 Devise and Omniauth were used to create this project. 
+
+## Pulling up the application
+
+To open this application: 
+    1) Run `rails db:migrate` in your console
+    2) Run `rails db:seed` in your console
+    3) Run `rails s` in your console
+    4) Open http://localhost:3000/ in your browser of choice
